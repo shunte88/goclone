@@ -80,7 +80,7 @@ Usage:
   goclone <url> [flags]
 
 Flags:
-  -C, --cookie strings        Pre-set these cookies
+  -l, --loadCookie string     Cookie.txt formatted file
   -h, --help                  help for goclone
   -o, --open                  Automatically open project in default browser
   -p, --proxy_string string   Proxy connection string. Support http and socks5 https://pkg.go.dev/github.com/gocolly/colly#Collector.SetProxy
@@ -101,4 +101,5 @@ Contributions are welcome! Please see [Contributing Guide](https://github.com/im
     <td align="center"><a href="https://github.com/imthaghost"><img src="https://avatars.githubusercontent.com/u/29051129?v=4" width="75px;" alt="Juan Mesaglio"/><br /><sub><b>Juan Mesaglio</b></sub></a><br /><a href="https://github.com/mesaglio" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/tempor1s"><img src="https://avatars0.githubusercontent.com/u/29741401?s=460&u=1ca03db5bbb7046bab14f72b7d6e801b9b0ac6f0&v=4" width="75px;" alt="Ben Lafferty"/><br /><sub><b>Ben Lafferty</b></sub></a><br /><a href="https://github.com/imthaghost/goclone/commits?author=tempor1s" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/omarsagoo"><img src="https://avatars3.githubusercontent.com/u/47726951?s=460&u=b806148e1598b97c454820c9c17452db39441177&v=4" width="75px;" alt="Omar Sagoo"/><br /><sub><b>Omar Sagoo</b></sub></a><br /><a href="https://github.com/imthaghost/goclone/commits?author=omarsagoo" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/shunte88"><img src="https://avatars.githubusercontent.com/u/16023304?v=4" width="75px;" alt="Stuart Hunter"/><br /><sub><b>Stuart Hunter</b></sub></a><br /><a href="https://github.com/shunte88/goclone/commits?author=shunte88" title="Code">💻</a></td>
   </tr>
