@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
+	"os"
+	"os/exec"
 	"runtime"
 	"strings"
-
-	"os/exec"
 
 	"github.com/imthaghost/goclone/pkg/crawler"
 	"github.com/imthaghost/goclone/pkg/file"
@@ -25,7 +25,24 @@ func cloneSite(ctx context.Context, args []string) error {
 		return err
 	}
 	var cs []*http.Cookie
-	if len(Cookies) != 0 {
+	if LoadCookies != "" {
+		cf, err := os.Open(LoadCookies)
+		if err != nil {
+			return err
+		}
+		defer cf.Close()
+		cs, err = Parse(cf)
+		if err != nil {
+			return err
+		}
+		for _, a := range args {
+			u, err := url.Parse(a)
+			if err != nil {
+				return fmt.Errorf("%q: %w", a, err)
+			}
+			jar.SetCookies(&url.URL{Scheme: u.Scheme, User: u.User, Host: u.Host}, cs)
+		}
+	} else if len(Cookies) != 0 {
 		cs = make([]*http.Cookie, 0, len(Cookies))
 		for _, c := range Cookies {
 			ff := strings.Fields(c)
@@ -34,7 +51,7 @@ func cloneSite(ctx context.Context, args []string) error {
 				if i := strings.IndexByte(f, '='); i >= 0 {
 					k, v = f[:i], strings.TrimRight(f[i+1:], ";")
 				} else {
-					return fmt.Errorf("No = in cookie %q", c)
+					return fmt.Errorf("there is No = in cookie %q", c)
 				}
 				cs = append(cs, &http.Cookie{Name: k, Value: v})
 			}
